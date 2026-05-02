@@ -13,10 +13,10 @@ import dao.UserDao;
  * @author EELU
  */
 public class signup extends javax.swing.JFrame {
+
     public String emailpattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
     public String mobileNumberpattern = "^[0-9]*$";
-          
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(signup.class.getName());
 
     /**
@@ -26,7 +26,8 @@ public class signup extends javax.swing.JFrame {
         initComponents();
         btnSave.setEnabled(false);
     }
-     public void clear(){
+
+    public void clear() {
         txtName.setText("");
         txtEmail.setText("");
         txtAdderss.setText("");
@@ -35,20 +36,23 @@ public class signup extends javax.swing.JFrame {
         txtMobileNumber.setText("");
         txtSecurityQuestion.setText("");
         btnSave.setEnabled(false);
-     }
-      public void valiatefileds(){
-         String name = txtName.getText();
-         String email = txtEmail.getText();
-         String mobileNumber = txtMobileNumber.getText();
-         String password = txtPassword.getText();
-         String adderss = txtAdderss.getText();
-         String securityQuestion = txtSecurityQuestion.getText();
-         String answer = txtAnswer.getText();
-         if(!name.equals("") && email.matches(emailpattern)&& mobileNumber.matches(mobileNumberpattern)&& mobileNumber.length()==10 && !adderss.equals("")&& !password.equals("")&& !securityQuestion.equals("")&& !answer.equals(""))
-             btnSave.setEnabled(true);
-         else 
-             btnSave.setEnabled(false);
-      }
+    }
+
+    public void valiatefileds() {
+        String name = txtName.getText();
+        String email = txtEmail.getText();
+        String mobileNumber = txtMobileNumber.getText();
+        String password = txtPassword.getText();
+        String adderss = txtAdderss.getText();
+        String securityQuestion = txtSecurityQuestion.getText();
+        String answer = txtAnswer.getText();
+        if (!name.equals("") && email.matches(emailpattern) && mobileNumber.matches(mobileNumberpattern) && mobileNumber.length() == 10 && !adderss.equals("") && !password.equals("") && !securityQuestion.equals("") && !answer.equals("")) {
+            btnSave.setEnabled(true);
+        } else {
+            btnSave.setEnabled(false);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -197,6 +201,7 @@ public class signup extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton5.setText("Login");
+        jButton5.addActionListener(this::jButton5ActionPerformed);
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 670, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first page background.PNG"))); // NOI18N
@@ -212,10 +217,9 @@ public class signup extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null, "Do you really want to close Application","Select",JOptionPane.YES_NO_OPTION);
-        if(a==0)
-        {
-           System.exit(0);
+        int a = JOptionPane.showConfirmDialog(null, "Do you really want to close Application", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            System.exit(0);
         }
     }//GEN-LAST:event_btnExitActionPerformed
 
@@ -272,6 +276,12 @@ public class signup extends javax.swing.JFrame {
         // TODO add your handling code here:
         valiatefileds();
     }//GEN-LAST:event_txtAnswerKeyReleased
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Login().setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
