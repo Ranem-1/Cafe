@@ -3,23 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dao;
-    import java.sql.*;
-/**
- *
- * @author EELU
- */
+import java.sql.*;
+
 public class ConnectionProvider {
-    public static Connection getCon(){
-       try{  
-          Class.forName("com.mysql.jdbc.Driver");
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cafe?useSSL=false","root","123456");
-          return con;
-       }
-       
-       catch(Exception e){
-         return null;
-       
-       }
+    public static Connection getCon() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/cafe?useSSL=false&allowPublicKeyRetrieval=true";
+            
+            // جربي دي الأول (لو مفيش باسورد)
+            Connection con = DriverManager.getConnection(url, "root", "ranem12345"); 
+            
+            // لو منجحتش وطلعت نفس الخطأ، غيري "" للباسورد الصح بتاعك
+            return con;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
-    
 }
